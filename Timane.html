@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Timane</title>
+  <link rel="shortcut icon" href="http://yourwebsitepath/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+body {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+#time {
+  font-size: 60px;
+  padding-top: 55px;
+  color: #1E90FF;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+#background {
+  width: 475px;
+  height:100%;
+  background-color:#F0F0F0;
+  position: absolute;
+  margin-left: -7px;
+  margin-top: -15px;
+}
+
+#date {
+  position: absolute;
+  text-align: center;
+  font-size: 20px;
+  padding-left: 145px;
+  color: #696969;
+  font-weight: 500;
+  padding-top: 10px;
+
+}
+
+#timer {
+  margin-top: 65px;
+  margin-left: 25px;
+  color: #4a4c4f;
+  font-size: 48px;
+  padding-left: 150px;
+  padding-top: 25px;
+  background-color: orange;
+  height: 220px;
+  width: 275px;
+  border-radius:30px;
+  background-color: white;
+  box-shadow: 7px 7px 50px #999;
+}
+
+#buttons {
+  margin-left: -93px;
+  margin-top: -30px;
+}
+
+.startStop{
+  font-size: 15px;
+  background-color: transparent;;
+  border: none;
+  outline: 0;
+  margin-left: 60px;
+  cursor: pointer;
+}
+
+.startStop:hover{
+  font-size: 15px;
+  color: #1E90FF;
+  background-color: transparent;;
+  border: none;
+  outline: 0;
+}
+
+.mins{
+ background-color: #1E90FF;
+ border: none;
+ color: white;
+ padding: 6px 12px;
+ font-size: 14px;
+ opacity: 0.6;
+ transition: 0.3s;
+ cursor: pointer;
+ border-radius:25px;
+ outline: 0;
+}
+
+.mins:hover {
+  opacity: 1;
+}
+
+#link:link{
+  color:#1E90FF;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-left: 150px;
+}
+
+#link:visited{
+  color:#1E90FF;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#link:hover{
+  color: darkblue;
+}
+
+hr {
+    border: 0;
+    border-bottom: 1px dashed #ccc;
+    background: #999;
+    margin-left: -150px;
+}
+
+#intoduction{
+  margin-left: 510px;
+  margin-top: 45px;
+  font-size: 33px;
+  color: #1E90FF;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+  float:left;
+}
+
+#names{
+width:160px;
+font-size: 33px;
+color: #1E90FF;
+outline:0;
+border: none;
+position: absolute;
+margin-top: 34px;
+margin-left: 7px;
+}
+#names::placeholder{
+  color: grey;
+  border-bottom:solid;
+  border-color: lightgrey;
+  border-width: 1.5px;
+}
+
+ul li {
+  cursor: pointer;
+  position: relative;
+  font-size: 18px;
+  transition: 0.2s;
+  user-select: none;
+  padding: 25px 70px 25px 25px;
+  width:620px;
+  color: #4a4c4f;
+  list-style-type: decimal;
+}
+
+ul li:hover {
+  background: #f9f9f9;
+  border-radius: 45px;
+}
+
+ul li.checked {
+  color: grey;
+  text-decoration: line-through;
+}
+
+
+ul li.checked::before {
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+
+.close {
+  position: absolute;
+  right: 30px;
+  top: 0;
+  margin-top:25px;
+
+}
+
+.close:hover {
+  color: #1E90FF;
+}
+
+
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+input {
+  border: none;
+  border-radius: 0;
+  width:700px;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+  border-bottom: solid;
+  border-width: 1.5px;
+  border-color: lightgrey;
+  outline:0;
+}
+
+#myDIV{
+margin-left:510px;
+margin-top: 100px;
+width:580px;
+position:absolute;
+}
+
+#myUL{
+  margin-top: 50px;
+}
+
+
+</style>
+</head>
+<body onload="start()">
+<div id="background">
+  <div id="time"></div>
+    <div id="date"></div>
+      <div id="timer"><span id="minute">25</span>:<span id="seconds">00</span>
+        <div><hr></hr></div>
+        <div id="buttons">
+          <button class="startStop" id="start">START</button>
+          <button class="startStop" id="stop">STOP</button>&emsp;
+          <button class="mins" id="min25">Work Time</button>
+          <button class="mins" id="min5">Short Break</button>
+          <button class="mins" id="min15">Long Break</button>
+        </div>
+        </div>
+        <div ><p style="margin-top:30px;"></p><a id="link"  href="https://francescocirillo.com/pages/pomodoro-technique" target="_blank" >The Pomodoro Technique</a></div>
+      </div>
+      <div id="intoduction"></div>
+      <div><input type="text" id="names" placeholder="your name">
+      <p id="name"></p></div>
+      <div><div id="myDIV" class="header">
+  <input type="text" id="myInput" placeholder="What needs to be done?">
+  <span onclick="newElement()" id="addBtn"></span>
+<ul id="myUL">
+  <li>Hey! Welcome to Timane, your own personal time tracker.</li>
+  <li>Use the Pomodoro technique to keep track of your time and work.</li>
+  <li>Seperate your "Work Time" sessions with a "Short Break", limiting a "Long Break" to every 3 sessions</li>
+  <li class="checked">Tip: click on the text which you would like to cross off</li>
+  <li>Tip: use the X button at the very right end to delete the text </li>
+
+</ul></div>
+
+<script>
+
+var input = document.getElementById("myInput");
+  input.addEventListener("keyup", function(event) {
+      event.preventDefault();
+      if (event.keyCode === 13) {
+          document.getElementById("addBtn").click();
+      }
+  });
+
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+var span = document.createElement("SPAN");
+var txt = document.createTextNode("\u00D7");
+span.className = "close";
+span.appendChild(txt);
+myNodelist[i].appendChild(span);
+}
+
+
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+close[i].onclick = function() {
+  var div = this.parentElement;
+  div.style.display = "none";
+}
+}
+
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+if (ev.target.tagName === 'LI') {
+  ev.target.classList.toggle('checked');
+}
+}, false);
+
+function newElement() {
+var li = document.createElement("li");
+var inputValue = document.getElementById("myInput").value;
+var t = document.createTextNode(inputValue);
+li.appendChild(t);
+if (inputValue === '') {
+
+} else {
+  document.getElementById("myUL").appendChild(li);
+}
+document.getElementById("myInput").value = "";
+
+var span = document.createElement("SPAN");
+var txt = document.createTextNode("\u00D7");
+span.className = "close";
+span.appendChild(txt);
+li.appendChild(span);
+
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+}
+
+
+function timer(){
+  var minute = 0;
+  var seconds = 0;
+  var totalSeconds = 1500;
+  var intervalId = null;
+
+  function startTimer() {
+    totalSeconds--;
+    minute = Math.floor((totalSeconds)/60);
+    seconds = totalSeconds - (minute*60);
+    if(seconds<10){seconds= '0' +seconds;}
+	  if(totalSeconds<1){totalSeconds=1}
+    document.getElementById("minute").innerHTML =minute;
+    document.getElementById("seconds").innerHTML =seconds;
+  }
+
+  document.getElementById('start').addEventListener('click', () => {
+    intervalId = setInterval(startTimer, 1000);
+    document.getElementById('start').disabled = true;
+
+  });
+  document.getElementById('stop').addEventListener('click', () => {
+    if (intervalId)
+      clearInterval(intervalId);
+      document.getElementById('start').disabled = false;
+  });
+
+  document.getElementById('min25').addEventListener('click', () => {
+     totalSeconds = 1500;
+     document.getElementById("minute").innerHTML = '25';
+     document.getElementById("seconds").innerHTML = '00';
+  });
+
+  document.getElementById('min5').addEventListener('click', () => {
+     totalSeconds = 300;
+     document.getElementById("minute").innerHTML = '5';
+     document.getElementById("seconds").innerHTML = '00';
+  });
+
+  document.getElementById('min15').addEventListener('click', () => {
+     totalSeconds = 900;
+     document.getElementById("minute").innerHTML = '15';
+     document.getElementById("seconds").innerHTML = '00';
+  });
+}
+
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    m = checkTime(m);
+    if (h>12){h=h-12;};
+    document.getElementById('time').innerHTML =  h + ":" + m ;
+    var t = setTimeout(startTime, 500);
+}
+
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};
+    return i;
+}
+
+function myDate() {
+    var today = new Date();
+    var weeks= ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    var month = today.getMonth();
+    var day = today.getDay();
+    var today = today.getDate();
+    document.getElementById('date').innerHTML =  weeks[day] + ", " + months[month] + " " + today ;
+    var t = setTimeout(startTime, 500);
+}
+
+function intro(){
+    var myDate = new Date();
+
+    if (myDate.getHours() > 5 && myDate.getHours() < 12) {
+        document.getElementById('intoduction').innerHTML = "Good morning, ";
+    }
+    else if(myDate.getHours() >= 12 && myDate.getHours() <=17){
+        document.getElementById('intoduction').innerHTML ="Good afternoon, ";
+    }
+    else if (myDate.getHours() > 17 && myDate.getHours() <20) {
+        document.getElementById('intoduction').innerHTML ="Good evening, ";
+    }
+    else {
+        document.getElementById('intoduction').innerHTML ="Good night, ";
+    }
+    }
+
+    function myName() {
+      var x = document.getElementById("names").value;
+      document.getElementById("name").innerHTML = x;
+    }
+
+function start(){
+    myDate();
+    startTime();
+    timer();
+    intro()
+
+}
+</script>
+</body>
+</html>
