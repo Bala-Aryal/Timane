@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <style>
+	
 body {
     font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
@@ -37,7 +38,6 @@ body {
   color: #696969;
   font-weight: 500;
   padding-top: 10px;
-
 }
 
 #timer {
@@ -131,14 +131,14 @@ hr {
 }
 
 #names{
-width:160px;
-font-size: 33px;
-color: #1E90FF;
-outline:0;
-border: none;
-position: absolute;
-margin-top: 34px;
-margin-left: 7px;
+  width:160px;
+  font-size: 33px;
+  color: #1E90FF;
+  outline:0;
+  border: none;
+  position: absolute;
+  margin-top: 34px;
+  margin-left: 7px;
 }
 #names::placeholder{
   color: grey;
@@ -214,10 +214,10 @@ input {
 }
 
 #myDIV{
-margin-left:510px;
-margin-top: 100px;
-width:580px;
-position:absolute;
+  margin-left:510px;
+  margin-top: 100px;
+  width:580px;
+  position:absolute;
 }
 
 #myUL{
@@ -241,7 +241,7 @@ position:absolute;
           <button class="mins" id="min15">Long Break</button>
         </div>
         </div>
-        <div ><p style="margin-top:30px;"></p><a id="link"  href="https://francescocirillo.com/pages/pomodoro-technique" target="_blank" >The Pomodoro Technique</a></div>
+        <div><p style="margin-top:30px;"></p><a id="link"  href="https://francescocirillo.com/pages/pomodoro-technique" target="_blank" >The Pomodoro Technique</a></div>
       </div>
       <div id="intoduction"></div>
       <div><input type="text" id="names" placeholder="your name">
@@ -255,7 +255,6 @@ position:absolute;
   <li>Seperate your "Work Time" sessions with a "Short Break", limiting a "Long Break" to every 3 sessions</li>
   <li class="checked">Tip: click on the text which you would like to cross off</li>
   <li>Tip: use the X button at the very right end to delete the text </li>
-
 </ul></div>
 
 <script>
@@ -271,57 +270,52 @@ var input = document.getElementById("myInput");
 var myNodelist = document.getElementsByTagName("LI");
 var i;
 for (i = 0; i < myNodelist.length; i++) {
-var span = document.createElement("SPAN");
-var txt = document.createTextNode("\u00D7");
-span.className = "close";
-span.appendChild(txt);
-myNodelist[i].appendChild(span);
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
 }
-
 
 var close = document.getElementsByClassName("close");
 var i;
-for (i = 0; i < close.length; i++) {
-close[i].onclick = function() {
-  var div = this.parentElement;
-  div.style.display = "none";
-}
-}
-
-var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
-if (ev.target.tagName === 'LI') {
-  ev.target.classList.toggle('checked');
-}
-}, false);
-
-function newElement() {
-var li = document.createElement("li");
-var inputValue = document.getElementById("myInput").value;
-var t = document.createTextNode(inputValue);
-li.appendChild(t);
-if (inputValue === '') {
-
-} else {
-  document.getElementById("myUL").appendChild(li);
-}
-document.getElementById("myInput").value = "";
-
-var span = document.createElement("SPAN");
-var txt = document.createTextNode("\u00D7");
-span.className = "close";
-span.appendChild(txt);
-li.appendChild(span);
-
 for (i = 0; i < close.length; i++) {
   close[i].onclick = function() {
     var div = this.parentElement;
     div.style.display = "none";
   }
 }
+
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    } else {
+      document.getElementById("myUL").appendChild(li);
+    }
+  document.getElementById("myInput").value = "";
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
 }
-
-
+}
+	
 function timer(){
   var minute = 0;
   var seconds = 0;
@@ -410,10 +404,10 @@ function intro(){
         document.getElementById('intoduction').innerHTML ="Good night, ";
     }
     }
-
-    function myName() {
-      var x = document.getElementById("names").value;
-      document.getElementById("name").innerHTML = x;
+	
+function myName() {
+  var x = document.getElementById("names").value;
+  document.getElementById("name").innerHTML = x;
     }
 
 function start(){
@@ -421,8 +415,8 @@ function start(){
     startTime();
     timer();
     intro()
-
 }
+	
 </script>
 </body>
 </html>
